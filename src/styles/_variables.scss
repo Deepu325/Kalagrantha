@@ -1,0 +1,71 @@
+:root {
+    // Global Tokens
+    --font-main: 'Outfit', sans-serif;
+    --font-serif: 'Playfair Display', serif;
+
+    --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-fast: all 0.3s ease;
+
+    --container-width: 1440px;
+    --container-padding: 2rem;
+
+    // Parent Theme: Warm Charcoal + Antique Gold
+    // Starting with a dark-mode institutional feel
+    --bg-primary: #1c1c1c;
+    --bg-secondary: #252525;
+    --text-primary: #f5f5f5;
+    --text-secondary: #a0a0a0;
+    --accent-color: #d4af37; // Antique Gold
+    --border-color: rgba(212, 175, 55, 0.2);
+    --nav-height: 80px;
+}
+
+[data-theme='theme-art-hub'] {
+    // Art Hub: Terracotta + Cream
+    --bg-primary: #fffdfa; // Rich Cream
+    --bg-secondary: #fdf5e6;
+    --text-primary: #2d2926;
+    --text-secondary: #5e5751;
+    --accent-color: #cc7722; // Terracotta
+    --border-color: rgba(204, 119, 34, 0.2);
+}
+
+[data-theme='theme-movement-epics'] {
+    // Movement & Epics: Deep Charcoal + Gold
+    --bg-primary: #0f0f0f; // Deep Charcoal
+    --bg-secondary: #1a1a1a;
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --accent-color: #c5a059; // Editorial Gold
+    --border-color: rgba(197, 160, 89, 0.2);
+}
+
+[data-theme='theme-yoga-ttc'] {
+    // Yoga TTC: Sage + Ivory
+    --bg-primary: #fffff0; // Ivory
+    --bg-secondary: #f7f7e8;
+    --text-primary: #2f3e33; // Sage-tinted charcoal
+    --text-secondary: #748b81;
+    --accent-color: #8a9a5b; // Sage Green
+    --border-color: rgba(138, 154, 91, 0.2);
+}
+
+[data-theme='theme-creative-hub'] {
+    // Creative Hub: Black + White + Accent
+    --bg-primary: #000000;
+    --bg-secondary: #0a0a0a;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --accent-color: #3e54ff; // Vibrant Electric Blue Accent
+    --border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='theme-events'] {
+    // Events: Navy + Coral
+    --bg-primary: #001233; // Deep Navy
+    --bg-secondary: #001a45;
+    --text-primary: #ffffff;
+    --text-secondary: #cad2c5;
+    --accent-color: #ff7f50; // Coral
+    --border-color: rgba(255, 127, 80, 0.3);
+}

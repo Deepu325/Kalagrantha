@@ -1,0 +1,190 @@
+.global-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--nav-height);
+    background: transparent;
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+    transition: var(--transition-smooth);
+    display: flex;
+    align-items: center;
+
+    &.mega-menu-open {
+        background: var(--bg-primary);
+    }
+
+    .nav-container {
+        width: 100%;
+        max-width: var(--container-width);
+        margin: 0 auto;
+        padding: 0 var(--container-padding);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        display: flex;
+        flex-direction: column;
+
+        .logo-text {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .logo-sub {
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            opacity: 0.7;
+        }
+    }
+
+    .nav-links,
+    .vertical-links {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+
+        a {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0;
+                height: 1px;
+                background: var(--accent-color);
+                transition: var(--transition-fast);
+            }
+
+            &:hover::after,
+            &.active::after {
+                width: 100%;
+            }
+        }
+    }
+
+    .has-mega-menu {
+        position: relative;
+        padding: 0.5rem 0;
+        cursor: pointer;
+
+        .mega-trigger {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .mega-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            width: 800px;
+            background: var(--bg-primary);
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-smooth);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        &:hover .mega-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .mega-menu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .mega-item {
+            padding: 1rem;
+            border: 1px solid transparent;
+
+            h3 {
+                font-family: var(--font-main);
+                font-size: 1rem;
+                margin-bottom: 0.25rem;
+            }
+
+            p {
+                font-size: 0.75rem;
+                opacity: 0.6;
+            }
+
+            &:hover {
+                border-color: var(--border-color);
+                background: var(--bg-secondary);
+            }
+        }
+    }
+
+    .nav-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+    }
+
+    .vertical-nav-container {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+
+        .vertical-title {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            font-weight: 700;
+            padding-right: 2rem;
+            border-right: 1px solid var(--border-color);
+        }
+    }
+
+    .nav-links.vertical-active {
+        border-left: 1px solid var(--border-color);
+        padding-left: 3rem;
+
+        .mega-trigger {
+            font-weight: 600;
+            color: var(--accent-color);
+            position: relative;
+
+            &::after {
+                content: ' \25BE'; // Down arrow
+                font-size: 0.7rem;
+            }
+        }
+    }
+
+    .cta-button {
+        background: var(--accent-color);
+        color: var(--bg-primary) !important;
+        padding: 0.75rem 1.5rem;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+
+        &:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+    }
+}

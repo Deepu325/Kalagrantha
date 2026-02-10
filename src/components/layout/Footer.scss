@@ -1,0 +1,55 @@
+.global-footer {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    padding: 80px 0 40px;
+    border-top: 1px solid var(--border-color);
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 4rem;
+        margin-bottom: 60px;
+    }
+
+    .footer-brand {
+        h2 {
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        p {
+            max-width: 400px;
+            opacity: 0.7;
+        }
+    }
+
+    h4 {
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+    }
+
+    ul {
+        li {
+            margin-bottom: 0.5rem;
+            opacity: 0.7;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition-fast);
+
+            &:hover {
+                opacity: 1;
+                transform: translateX(5px);
+            }
+        }
+    }
+
+    .footer-bottom {
+        padding-top: 40px;
+        border-top: 1px solid var(--border-color);
+        text-align: center;
+        font-size: 0.8rem;
+        opacity: 0.5;
+    }
+}

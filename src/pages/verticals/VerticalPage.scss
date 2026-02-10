@@ -1,0 +1,331 @@
+.vertical-page {
+    padding-top: var(--nav-height);
+
+    .page-hero {
+        height: 70vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+
+        &.has-bg {
+            .hero-bg-wrapper {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+
+                .hero-bg-image {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    filter: brightness(0.5);
+                }
+
+                .hero-overlay {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(to bottom, transparent 30%, var(--bg-primary) 100%);
+                }
+            }
+        }
+
+        &.editorial {
+            height: 90vh;
+            border-bottom: 2px solid var(--text-primary);
+
+            .large-title {
+                font-size: clamp(4rem, 10vw, 8rem);
+                margin-bottom: 1rem;
+            }
+
+            .lead {
+                font-size: 1.5rem;
+                max-width: 600px;
+            }
+        }
+
+        &.minimal {
+            text-align: center;
+            justify-content: center;
+            height: 60vh;
+
+            .cert-badges {
+                margin-top: 2rem;
+                display: flex;
+                gap: 1rem;
+                justify-content: center;
+
+                span {
+                    border: 1px solid var(--border-color);
+                    padding: 0.5rem 1rem;
+                    font-size: 0.8rem;
+                    letter-spacing: 2px;
+                }
+            }
+        }
+
+        &.creative {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        &.video-bg {
+            background: #000;
+            color: #fff;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+
+            .subtitle {
+                text-transform: uppercase;
+                letter-spacing: 4px;
+                font-size: 0.8rem;
+                color: var(--accent-color);
+                margin-bottom: 1.5rem;
+                display: block;
+            }
+
+            h1 {
+                font-size: 4.5rem;
+                margin-bottom: 1.5rem;
+                line-height: 1.1;
+                color: var(--text-primary);
+                text-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            }
+
+            p {
+                font-size: 1.2rem;
+                opacity: 0.9;
+                color: var(--text-primary);
+            }
+        }
+    }
+
+    // Generic Section Title
+    .section-title {
+        font-size: 3rem;
+        margin-bottom: 3rem;
+        text-align: center;
+        color: var(--text-primary);
+    }
+
+    // Art Hub: Faculty & Timetable
+    .faculty-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+
+        .faculty-card {
+            padding: 2.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            transition: var(--transition-smooth);
+
+            h3 {
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+                color: var(--accent-color);
+            }
+
+            .role {
+                font-size: 0.8rem;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                opacity: 0.6;
+                display: block;
+                margin-bottom: 1.5rem;
+            }
+
+            p {
+                font-size: 0.95rem;
+                opacity: 0.8;
+                line-height: 1.6;
+            }
+
+            &:hover {
+                transform: translateY(-10px);
+            }
+        }
+    }
+
+    .timetable-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        .timetable-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition-fast);
+
+            &:hover {
+                background: var(--bg-secondary);
+            }
+
+            .times {
+                h4 {
+                    font-size: 1.25rem;
+                    margin-bottom: 0.25rem;
+                }
+
+                span {
+                    opacity: 0.6;
+                    font-size: 0.9rem;
+                }
+            }
+
+            .level span {
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                font-size: 0.85rem;
+                color: var(--accent-color);
+                font-weight: 600;
+            }
+        }
+    }
+
+    // Movement & Epics: Modules
+    .module-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+
+        .module-card {
+            padding: 3rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+
+            .mod-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 1.5rem;
+                border-bottom: 1px solid var(--border-color);
+                padding-bottom: 1rem;
+
+                h3 {
+                    font-size: 2rem;
+                }
+
+                .duration {
+                    font-style: italic;
+                    opacity: 0.6;
+                }
+            }
+
+            p {
+                font-size: 1.1rem;
+            }
+
+            strong {
+                color: var(--accent-color);
+            }
+        }
+    }
+
+    // Yoga TTC: Curriculum
+    .curriculum-breakdown {
+        background: var(--bg-secondary);
+        padding: 4rem;
+        border: 1px solid var(--border-color);
+
+        .curr-item-v2 {
+            display: grid;
+            grid-template-columns: 1fr 200px;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+
+            h4 {
+                font-size: 1.2rem;
+            }
+
+            .hours {
+                text-align: right;
+                font-weight: 600;
+                color: var(--accent-color);
+            }
+
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+    }
+
+    // Creative Hub: Spaces
+    .spaces-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+
+        .space-card {
+            padding: 2.5rem;
+            border: 1px solid var(--border-color);
+            background: var(--bg-secondary);
+
+            .space-info {
+                margin-bottom: 1.5rem;
+
+                h3 {
+                    font-size: 1.5rem;
+                    margin-bottom: 0.5rem;
+                }
+
+                .type {
+                    font-size: 0.8rem;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    opacity: 0.5;
+                }
+            }
+
+            .space-tech p {
+                font-size: 0.9rem;
+                opacity: 0.8;
+            }
+
+            strong {
+                color: var(--accent-color);
+            }
+        }
+    }
+
+    // Events: Clients
+    .client-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        justify-content: center;
+
+        .client-badge {
+            padding: 1rem 2rem;
+            border: 1px solid var(--border-color);
+            border-radius: 100px;
+            transition: var(--transition-fast);
+
+            span {
+                font-size: 0.9rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+
+            &:hover {
+                background: var(--accent-color);
+                color: var(--bg-primary);
+                border-color: var(--accent-color);
+            }
+        }
+    }
+}
