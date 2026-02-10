@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNav } from '../../context/NavContext';
+import GallerySection from '../../components/sections/GallerySection';
 import creativeHeroImg from '../../assets/images/creative_hub_hero_bg.png';
 import './VerticalPage.scss';
 
@@ -84,6 +85,13 @@ const CreativeHub = () => {
                     </div>
                 </div>
             </section>
+
+            <GallerySection images={[
+                'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800',
+                'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800',
+                'https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=800',
+                'https://images.unsplash.com/photo-1561998338-13ad7883b20f?w=800'
+            ]} />
         </div>
     );
 };

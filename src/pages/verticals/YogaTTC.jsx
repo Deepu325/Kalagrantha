@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNav } from '../../context/NavContext';
+import GallerySection from '../../components/sections/GallerySection';
 import yogaHeroImg from '../../assets/images/yoga_ttc_hero_bg.png';
 import './VerticalPage.scss';
 
@@ -74,6 +75,13 @@ const YogaTTC = () => {
                     </div>
                 </div>
             </section>
+
+            <GallerySection images={[
+                'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800',
+                'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800',
+                'https://images.unsplash.com/photo-1588286840104-8957b019727f?w=800',
+                'https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=800'
+            ]} />
         </div>
     );
 };

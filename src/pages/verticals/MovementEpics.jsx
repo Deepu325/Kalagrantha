@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { useNav } from '../../context/NavContext';
+import GallerySection from '../../components/sections/GallerySection';
 import epicsHeroImg from '../../assets/images/movement_epics_hero_bg.png';
 import './VerticalPage.scss';
 
@@ -92,6 +93,13 @@ const MovementEpics = () => {
                     </div>
                 </div>
             </section>
+
+            <GallerySection images={[
+                'https://images.unsplash.com/photo-1503095396549-807759245b35?w=800',
+                'https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?w=800',
+                'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800',
+                'https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=800'
+            ]} />
         </div>
     );
 };

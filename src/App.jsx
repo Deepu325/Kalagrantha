@@ -1,7 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MainLayout from './components/layout/MainLayout';
+import Landing from './pages/parent/Landing';
 import ParentHome from './pages/parent/ParentHome';
+import About from './pages/parent/About';
 import ArtHub from './pages/verticals/ArtHub';
 import MovementEpics from './pages/verticals/MovementEpics';
 import YogaTTC from './pages/verticals/YogaTTC';
@@ -14,8 +16,9 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<MainLayout />}>
-          <Route index element={<ParentHome />} />
+        <Route path="/" element={<Landing />} />
+        <Route element={<MainLayout />}>
+          <Route path="/home" element={<ParentHome />} />
           <Route path="art-hub" element={<ArtHub />} />
           <Route path="movement-epics" element={<MovementEpics />} />
           <Route path="yoga-ttc" element={<YogaTTC />} />
@@ -23,7 +26,7 @@ function App() {
           <Route path="events-entertainment" element={<Events />} />
 
           {/* Fallback or other global pages */}
-          <Route path="about" element={<div className="container section"><h1>About Us</h1></div>} />
+          <Route path="about" element={<About />} />
           <Route path="calendar" element={<div className="container section"><h1>Event Calendar</h1></div>} />
           <Route path="collaborate" element={<div className="container section"><h1>Collaborate</h1></div>} />
           <Route path="contact" element={<Contact />} />
