@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import { Link } from 'react-router-dom';
 import { useNav } from '../../context/NavContext';
-import GallerySection from '../../components/sections/GallerySection';
+import DynamicGallery from '../../components/sections/DynamicGallery';
 import artHeroImg from '../../assets/images/art_hub_hero_bg.png';
 import './VerticalPage.scss';
 
@@ -200,12 +201,12 @@ const ArtHub = () => {
                             <p>{tabContent[activeTab].desc}</p>
                         </div>
                         <div className="hero-cta-group">
-                            <button className="cta-btn primary">
+                            <Link to="/art-hub/enroll" className="cta-btn primary">
                                 Enroll Now
-                            </button>
-                            <button className="cta-btn secondary">
+                            </Link>
+                            <Link to="/art-hub/timetable" className="cta-btn secondary">
                                 View Schedule <span className="arrow">→</span>
-                            </button>
+                            </Link>
                         </div>
                     </div>
                     <div className="hero-stats-mini">
@@ -288,7 +289,12 @@ const ArtHub = () => {
                 </div>
             </section>
 
-            <GallerySection vertical="art-hub" />
+            <section className="gallery-section section">
+                <div className="container">
+                    <h2 className="section-title">Gallery</h2>
+                    <DynamicGallery vertical="art-hub" />
+                </div>
+            </section>
         </div>
     );
 };

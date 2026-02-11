@@ -2,23 +2,22 @@ import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useNav } from '../../context/NavContext';
 import { VERTICALS } from '../../constants/verticals';
-import './Navbar.scss';
+import './MovementEpicsNavbar.scss';
 
-const Navbar = () => {
+const MovementEpicsNavbar = () => {
     const { activeVertical } = useNav();
     const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
 
     return (
-        <nav className={`global-nav ${isMegaMenuOpen ? 'mega-menu-open' : ''}`}>
+        <nav className="movement-epics-nav">
             <div className="nav-container">
                 <div className="nav-left">
-                    <Link to="/" className="logo">
+                    <Link to="/home" className="logo">
                         <span className="logo-text">KALA</span>
                         <span className="logo-sub">ECOSYSTEM</span>
                     </Link>
                 </div>
 
-                {/* Regular Navbar if no active vertical or on hover/menu trigger */}
                 <div className="nav-center">
                     <div className="nav-wrapper">
                         {activeVertical && (
@@ -35,8 +34,6 @@ const Navbar = () => {
                         )}
 
                         <ul className={`nav-links ${activeVertical ? 'vertical-active' : ''}`}>
-                            {!activeVertical && <li><NavLink to="/">Home</NavLink></li>}
-
                             <li
                                 onMouseEnter={() => setIsMegaMenuOpen(true)}
                                 onMouseLeave={() => setIsMegaMenuOpen(false)}
@@ -54,14 +51,6 @@ const Navbar = () => {
                                     </div>
                                 </div>
                             </li>
-
-                            {!activeVertical && (
-                                <>
-                                    <li><NavLink to="/about">About</NavLink></li>
-                                    <li><NavLink to="/calendar">Calendar</NavLink></li>
-                                    <li><NavLink to="/collaborate">Collaborate</NavLink></li>
-                                </>
-                            )}
                         </ul>
                     </div>
                 </div>
@@ -77,4 +66,4 @@ const Navbar = () => {
     );
 };
 
-export default Navbar;
+export default MovementEpicsNavbar;

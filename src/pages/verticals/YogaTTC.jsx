@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useNav } from '../../context/NavContext';
-import GallerySection from '../../components/sections/GallerySection';
-import yogaHeroImg from '../../assets/images/yoga_ttc_hero_bg.png';
+import DynamicGallery from '../../components/sections/DynamicGallery';
+import YogaGallerySwiper from '../../components/sections/YogaGallerySwiper';
 import './VerticalPage.scss';
 
 const YogaTTC = () => {
@@ -10,20 +11,22 @@ const YogaTTC = () => {
 
     return (
         <div className="vertical-page yoga-ttc-page">
-            <header className="page-hero minimal has-bg">
-                <div className="hero-bg-wrapper">
-                    <img src={yogaHeroImg} alt={activeVertical.name} className="hero-bg-image" />
-                    <div className="hero-overlay"></div>
-                </div>
-                <div className="container">
-                    <div className="hero-content">
-                        <span className="subtitle">{activeVertical.name}</span>
-                        <h1>{activeVertical.cta}</h1>
-                        <p>{activeVertical.description}</p>
-                        <div className="cert-badges">
-                            <span>RYT 200</span>
-                            <span>RYT 500</span>
-                            <span>YACEP</span>
+            <header className="page-hero yoga-ttc-zen-hero">
+                <YogaGallerySwiper 
+                    title="Yoga Teacher Training" 
+                    subtitle="Awaken the teacher within, transform lives through ancient wisdom" 
+                />
+                <div className="zen-overlay-content">
+                    <div className="container">
+                        <div className="zen-cta-group">
+                            <Link to="/yoga-ttc/program" className="zen-btn primary">
+                                <span className="btn-text">Explore Journey</span>
+                                <span className="btn-icon">🕉</span>
+                            </Link>
+                            <Link to="/yoga-ttc/register" className="zen-btn secondary">
+                                <span className="btn-text">Begin Practice</span>
+                                <span className="btn-arrow">→</span>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -76,12 +79,12 @@ const YogaTTC = () => {
                 </div>
             </section>
 
-            <GallerySection images={[
-                'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800',
-                'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800',
-                'https://images.unsplash.com/photo-1588286840104-8957b019727f?w=800',
-                'https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=800'
-            ]} />
+            <section className="gallery-section section">
+                <div className="container">
+                    <h2 className="section-title">Gallery</h2>
+                    <DynamicGallery vertical="yoga-ttc" />
+                </div>
+            </section>
         </div>
     );
 };

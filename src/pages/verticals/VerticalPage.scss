@@ -238,6 +238,10 @@
                         font-weight: 500;
                         transition: all 0.3s ease;
                         position: relative;
+                        text-decoration: none;
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
 
                         &.primary {
                             background: linear-gradient(135deg, var(--art-hub-accent) 0%, #1d4ed8 100%);
@@ -905,6 +909,307 @@
                 background: var(--accent-color);
                 color: var(--bg-primary);
                 border-color: var(--accent-color);
+            }
+        }
+    }
+}
+// Movement & Epics Hero Styling
+.movement-epics-hero {
+    position: relative;
+    height: 70vh;
+    min-height: 500px;
+    
+    .gallery-swiper {
+        height: 100%;
+        border-radius: 0;
+    }
+    
+    .hero-overlay-content {
+        position: absolute;
+        bottom: 80px;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        
+        .hero-cta-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            
+            .cta-btn {
+                padding: 12px 24px;
+                border-radius: 6px;
+                text-decoration: none;
+                font-weight: 600;
+                transition: all 0.3s ease;
+                backdrop-filter: blur(10px);
+                
+                &.primary {
+                    background: rgba(147, 197, 253, 0.9);
+                    color: #1e293b;
+                    border: 2px solid rgba(147, 197, 253, 0.9);
+                    
+                    &:hover {
+                        background: rgba(147, 197, 253, 1);
+                        transform: translateY(-2px);
+                        box-shadow: 0 8px 25px rgba(147, 197, 253, 0.4);
+                    }
+                }
+                
+                &.secondary {
+                    background: rgba(255, 255, 255, 0.1);
+                    color: white;
+                    border: 2px solid rgba(255, 255, 255, 0.3);
+                    
+                    &:hover {
+                        background: rgba(255, 255, 255, 0.2);
+                        border-color: rgba(255, 255, 255, 0.5);
+                        transform: translateY(-2px);
+                    }
+                    
+                    .arrow {
+                        margin-left: 8px;
+                        transition: transform 0.3s ease;
+                    }
+                    
+                    &:hover .arrow {
+                        transform: translateX(4px);
+                    }
+                }
+            }
+        }
+    }
+    
+    @media (max-width: 768px) {
+        height: 60vh;
+        min-height: 400px;
+        
+        .hero-overlay-content {
+            bottom: 60px;
+            
+            .hero-cta-group {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.8rem;
+                
+                .cta-btn {
+                    padding: 10px 20px;
+                    font-size: 0.9rem;
+                }
+            }
+        }
+    }
+}
+// Yoga TTC Zen Hero Styling - Purple/Lavender Theme
+.yoga-ttc-zen-hero {
+    position: relative;
+    height: 80vh;
+    min-height: 600px;
+    
+    .yoga-gallery-swiper {
+        height: 100%;
+        border-radius: 0;
+    }
+    
+    .zen-overlay-content {
+        position: absolute;
+        bottom: 100px;
+        left: 0;
+        right: 0;
+        z-index: 15;
+        
+        .interactive-text-section {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            
+            .zen-quote {
+                margin-bottom: 2rem;
+                
+                .quote-text {
+                    display: block;
+                    font-size: 1.8rem;
+                    color: rgba(255, 255, 255, 0.9);
+                    font-weight: 300;
+                    font-style: italic;
+                    letter-spacing: 1px;
+                    margin-bottom: 0.5rem;
+                    transition: all 0.4s ease;
+                    
+                    &:hover {
+                        color: white;
+                        transform: translateY(-2px);
+                        text-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+                    }
+                }
+                
+                .quote-highlight {
+                    display: block;
+                    font-size: 2.2rem;
+                    color: #c4b5fd;
+                    font-weight: 500;
+                    letter-spacing: 2px;
+                    transition: all 0.4s ease;
+                    cursor: pointer;
+                    
+                    &:hover {
+                        color: #a855f7;
+                        transform: scale(1.05);
+                        text-shadow: 0 6px 20px rgba(168, 85, 247, 0.5);
+                    }
+                }
+            }
+        }
+        
+        .zen-cta-group {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            
+            .zen-btn {
+                padding: 15px 30px;
+                border-radius: 50px;
+                text-decoration: none;
+                font-weight: 500;
+                transition: all 0.4s ease;
+                backdrop-filter: blur(15px);
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                position: relative;
+                overflow: hidden;
+                
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: -100%;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+                    transition: left 0.6s ease;
+                }
+                
+                &:hover::before {
+                    left: 100%;
+                }
+                
+                &.primary {
+                    background: rgba(168, 85, 247, 0.9);
+                    color: white;
+                    border: 2px solid rgba(168, 85, 247, 0.9);
+                    
+                    &:hover {
+                        background: rgba(168, 85, 247, 1);
+                        transform: translateY(-3px);
+                        box-shadow: 0 12px 35px rgba(168, 85, 247, 0.4);
+                    }
+                    
+                    .btn-icon {
+                        font-size: 1.2rem;
+                        transition: transform 0.3s ease;
+                    }
+                    
+                    &:hover .btn-icon {
+                        transform: rotate(180deg);
+                    }
+                }
+                
+                &.secondary {
+                    background: rgba(255, 255, 255, 0.1);
+                    color: white;
+                    border: 2px solid rgba(196, 181, 253, 0.5);
+                    
+                    &:hover {
+                        background: rgba(196, 181, 253, 0.2);
+                        border-color: rgba(196, 181, 253, 0.8);
+                        transform: translateY(-3px);
+                    }
+                    
+                    .btn-arrow {
+                        transition: transform 0.3s ease;
+                    }
+                    
+                    &:hover .btn-arrow {
+                        transform: translateX(5px);
+                    }
+                }
+                
+                .btn-text {
+                    font-size: 1rem;
+                    letter-spacing: 0.5px;
+                }
+            }
+        }
+    }
+    
+    @keyframes mandalaFloat {
+        0%, 100% { 
+            transform: translateY(0px) rotate(0deg); 
+        }
+        33% { 
+            transform: translateY(-8px) rotate(120deg); 
+        }
+        66% { 
+            transform: translateY(-4px) rotate(240deg); 
+        }
+    }
+    
+    @media (max-width: 768px) {
+        height: 70vh;
+        min-height: 500px;
+        
+        .zen-overlay-content {
+            bottom: 80px;
+            
+            .interactive-text-section {
+                margin-bottom: 2rem;
+                
+                .zen-quote {
+                    margin-bottom: 1.5rem;
+                    
+                    .quote-text {
+                        font-size: 1.3rem;
+                        letter-spacing: 0.5px;
+                    }
+                    
+                    .quote-highlight {
+                        font-size: 1.6rem;
+                        letter-spacing: 1px;
+                    }
+                }
+            }
+            
+            .zen-cta-group {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+                
+                .zen-btn {
+                    padding: 12px 24px;
+                    
+                    .btn-text {
+                        font-size: 0.9rem;
+                    }
+                }
+            }
+        }
+    }
+    
+    @media (max-width: 480px) {
+        height: 60vh;
+        min-height: 400px;
+        
+        .zen-overlay-content {
+            .interactive-text-section {
+                .zen-quote {
+                    .quote-text {
+                        font-size: 1.1rem;
+                    }
+                    
+                    .quote-highlight {
+                        font-size: 1.3rem;
+                    }
+                }
             }
         }
     }

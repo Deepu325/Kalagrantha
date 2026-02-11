@@ -2,23 +2,22 @@ import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useNav } from '../../context/NavContext';
 import { VERTICALS } from '../../constants/verticals';
-import './Navbar.scss';
+import './SubNavbar.scss';
 
-const Navbar = () => {
+const SubNavbar = () => {
     const { activeVertical } = useNav();
     const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
 
     return (
-        <nav className={`global-nav ${isMegaMenuOpen ? 'mega-menu-open' : ''}`}>
+        <nav className="sub-nav">
             <div className="nav-container">
                 <div className="nav-left">
-                    <Link to="/" className="logo">
+                    <Link to="/home" className="logo">
                         <span className="logo-text">KALA</span>
                         <span className="logo-sub">ECOSYSTEM</span>
                     </Link>
                 </div>
 
-                {/* Regular Navbar if no active vertical or on hover/menu trigger */}
                 <div className="nav-center">
                     <div className="nav-wrapper">
                         {activeVertical && (
@@ -35,7 +34,7 @@ const Navbar = () => {
                         )}
 
                         <ul className={`nav-links ${activeVertical ? 'vertical-active' : ''}`}>
-                            {!activeVertical && <li><NavLink to="/">Home</NavLink></li>}
+                            {!activeVertical && <li><NavLink to="/home">Home</NavLink></li>}
 
                             <li
                                 onMouseEnter={() => setIsMegaMenuOpen(true)}
@@ -77,4 +76,4 @@ const Navbar = () => {
     );
 };
 
-export default Navbar;
+export default SubNavbar;

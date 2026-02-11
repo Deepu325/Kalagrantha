@@ -55,28 +55,55 @@
 }
 
 // Art Hub Blue Theme Footer
-.art-hub-page .global-footer {
-    background: linear-gradient(to bottom, #dbeafe 0%, #bae6fd 100%);
-    border-top: 2px solid rgba(37, 99, 235, 0.3);
+.art-hub-overview,
+.art-hub-classes,
+.art-hub-faculty,
+.art-hub-timetable,
+.art-hub-enroll {
+    .global-footer {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        border-top: 3px solid #d4af37;
+        color: white;
 
-    .footer-brand h2 {
-        color: #1e40af;
-    }
-
-    h4 {
-        color: #2563eb;
-    }
-
-    ul li {
-        color: #1e3a8a;
-
-        &:hover {
-            color: #1d4ed8;
+        .footer-brand h2 {
+            color: #d4af37;
+            font-size: 2rem;
         }
-    }
 
-    .footer-bottom {
-        border-top: 1px solid rgba(37, 99, 235, 0.2);
-        color: #1e3a8a;
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        h4 {
+            color: #d4af37;
+            font-weight: 600;
+        }
+
+        ul li {
+            color: rgba(255, 255, 255, 0.7);
+
+            a {
+                color: rgba(255, 255, 255, 0.7);
+                text-decoration: none;
+                transition: all 0.2s ease;
+
+                &:hover {
+                    color: #d4af37;
+                }
+            }
+
+            &:hover {
+                color: #d4af37;
+            }
+        }
+
+        .footer-contact p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            color: rgba(255, 255, 255, 0.6);
+        }
     }
 }

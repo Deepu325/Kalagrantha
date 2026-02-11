@@ -1,12 +1,22 @@
 import React, { useEffect, useRef } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import Lenis from 'lenis';
 import Navbar from './Navbar';
+import MainNavbar from './MainNavbar';
+import SubNavbar from './SubNavbar';
+import MovementEpicsNavbar from './MovementEpicsNavbar';
 import Footer from './Footer';
 import { NavProvider } from '../../context/NavContext';
 
 const MainLayout = () => {
     const scrollRef = useRef(null);
+    const location = useLocation();
+    const isMainPage = location.pathname === '/home';
+    const isMovementEpicsPage = location.pathname.startsWith('/movement-epics');
+    const isVerticalPage = location.pathname.startsWith('/art-hub') || 
+                          location.pathname.startsWith('/yoga-ttc') || 
+                          location.pathname.startsWith('/creative-hub') || 
+                          location.pathname.startsWith('/events-entertainment');
 
     useEffect(() => {
         const lenis = new Lenis({
@@ -27,10 +37,17 @@ const MainLayout = () => {
         };
     }, []);
 
+    const getNavbar = () => {
+        if (isMainPage) return <MainNavbar />;
+        if (isMovementEpicsPage) return <MovementEpicsNavbar />;
+        if (isVerticalPage) return <Navbar />;
+        return <SubNavbar />;
+    };
+
     return (
         <NavProvider>
             <div className="app-wrapper">
-                <Navbar />
+                {getNavbar()}
                 <main className="content-wrapper">
                     <Outlet />
                 </main>

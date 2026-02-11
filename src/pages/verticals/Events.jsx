@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNav } from '../../context/NavContext';
-import GallerySection from '../../components/sections/GallerySection';
+import DynamicGallery from '../../components/sections/DynamicGallery';
 import eventsHeroImg from '../../assets/images/events_hero_bg.png';
 import './VerticalPage.scss';
 
@@ -65,12 +65,12 @@ const Events = () => {
                 </div>
             </section>
 
-            <GallerySection images={[
-                'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800',
-                'https://images.unsplash.com/photo-1511578314322-379afb476865?w=800',
-                'https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=800',
-                'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800'
-            ]} />
+            <section className="gallery-section section">
+                <div className="container">
+                    <h2 className="section-title">Gallery</h2>
+                    <DynamicGallery vertical="events" />
+                </div>
+            </section>
         </div>
     );
 };

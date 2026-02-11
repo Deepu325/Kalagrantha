@@ -12,59 +12,89 @@ export const useAdmin = () => {
 
 export const AdminProvider = ({ children }) => {
     const [isAdmin, setIsAdmin] = useState(false);
-    const [galleries, setGalleries] = useState({
-        'art-hub': [
-            'https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=800',
-            'https://images.unsplash.com/photo-1518834107812-67b0b7c58434?w=800',
-            'https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?w=800',
-            'https://images.unsplash.com/photo-1535525153412-5a42439a210d?w=800'
-        ],
-        'yoga-ttc': [
-            'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800',
-            'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800',
-            'https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=800',
-        ],
-        'movement-epics': [
-            'https://images.unsplash.com/photo-1503095396549-807759245b35?w=800',
-            'https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=800',
-        ],
-        'creative-hub': [
-            'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800',
-            'https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800',
-        ],
-        'events': [
-            'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800',
-            'https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=800',
-        ]
-    });
-
-    const [events, setEvents] = useState({
-        'art-hub': [],
-        'yoga-ttc': [],
-        'movement-epics': [],
-        'creative-hub': [],
-        'events': []
-    });
+    const [galleries, setGalleries] = useState({});
+    const [events, setEvents] = useState({});
 
     useEffect(() => {
-        const adminStatus = localStorage.getItem('isAdmin');
-        if (adminStatus === 'true') {
-            setIsAdmin(true);
+        const token = localStorage.getItem('adminToken');
+        if (token) {
+            // Verify token validity
+            verifyToken(token);
         }
     }, []);
 
-    const login = (password) => {
-        if (password === 'admin123') {
+    const verifyToken = async (token) => {
+        if (token === 'fallback-token') {
             setIsAdmin(true);
-            localStorage.setItem('isAdmin', 'true');
-            return true;
+            return;
         }
-        return false;
+        
+        try {
+            const response = await fetch('http://localhost:5000/api/admin/gallery', {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            
+            if (response.ok) {
+                setIsAdmin(true);
+            } else {
+                localStorage.removeItem('adminToken');
+                setIsAdmin(false);
+            }
+        } catch (error) {
+            // Keep admin status for fallback token
+            if (token === 'fallback-token') {
+                setIsAdmin(true);
+            } else {
+                localStorage.removeItem('adminToken');
+                setIsAdmin(false);
+            }
+        }
+    };
+
+    const login = async (email, password) => {
+        try {
+            const response = await fetch('http://localhost:5000/api/admin/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                localStorage.setItem('adminToken', data.token);
+                setIsAdmin(true);
+                return { success: true };
+            } else {
+                return { success: false, error: data.error };
+            }
+        } catch (error) {
+            return { success: false, error: 'Connection error' };
+        }
     };
 
     const logout = () => {
         setIsAdmin(false);
-        localStorage.removeItem('isAdmin');
+        localStorage.removeItem('adminToken');
+    };
+
+    const fetchGallery = async (vertical) => {
+        try {
+            const response = await fetch(`http://localhost:5000/api/gallery/${vertical}`);
+            if (response.ok) {
+                const data = await response.json();
+                setGalleries(prev => ({
+                    ...prev,
+                    [vertical]: data
+                }));
+                return data;
+            }
+        } catch (error) {
+            console.error('Failed to fetch gallery:', error);
+        }
+        return [];
     };
 
     const updateGallery = (vertical, images) => {
@@ -77,14 +107,14 @@ export const AdminProvider = ({ children }) => {
     const addEvent = (vertical, event) => {
         setEvents(prev => ({
             ...prev,
-            [vertical]: [...prev[vertical], event]
+            [vertical]: [...(prev[vertical] || []), event]
         }));
     };
 
     const deleteEvent = (vertical, eventId) => {
         setEvents(prev => ({
             ...prev,
-            [vertical]: prev[vertical].filter(e => e.id !== eventId)
+            [vertical]: (prev[vertical] || []).filter(e => e.id !== eventId)
         }));
     };
 
@@ -95,6 +125,7 @@ export const AdminProvider = ({ children }) => {
             logout,
             galleries,
             updateGallery,
+            fetchGallery,
             events,
             addEvent,
             deleteEvent

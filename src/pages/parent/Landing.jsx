@@ -36,6 +36,11 @@ const Landing = () => {
 
     return (
         <div className="landing-page">
+            <div className="admin-logo-landing">
+                <a href="/admin/login">
+                    <div className="logo-emblem">KA</div>
+                </a>
+            </div>
             <div className="landing-content">
                 <div className="landing-divider top"></div>
                 <h1 className="landing-logo">

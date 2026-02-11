@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { VERTICALS } from '../../constants/verticals';
-import GallerySection from '../../components/sections/GallerySection';
+import DynamicGallery from '../../components/sections/DynamicGallery';
 import parentHeroImg from '../../assets/images/parent_hero_bg.png';
 import './ParentHome.scss';
 
@@ -141,14 +141,12 @@ const ParentHome = () => {
                 </div>
             </section>
 
-            <GallerySection images={[
-                'https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=800',
-                'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800',
-                'https://images.unsplash.com/photo-1503095396549-807759245b35?w=800',
-                'https://images.unsplash.com/photo-1518834107812-67b0b7c58434?w=800',
-                'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800',
-                'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800'
-            ]} />
+            <section className="gallery-section section">
+                <div className="container">
+                    <h2 className="section-title">Gallery Highlights</h2>
+                    <DynamicGallery vertical="art-hub" subsection="all" />
+                </div>
+            </section>
 
             <section className="collaborate section">
                 <div className="container">

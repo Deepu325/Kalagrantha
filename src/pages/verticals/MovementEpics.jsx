@@ -1,23 +1,91 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useNav } from '../../context/NavContext';
-import GallerySection from '../../components/sections/GallerySection';
-import epicsHeroImg from '../../assets/images/movement_epics_hero_bg.png';
+import DynamicGallery from '../../components/sections/DynamicGallery';
+import GallerySwiper from '../../components/sections/GallerySwiper';
 import './VerticalPage.scss';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const MovementEpics = () => {
     const pageRef = useRef(null);
     const { activeVertical } = useNav();
 
     useEffect(() => {
-        if (!pageRef.current) return;
-
         const ctx = gsap.context(() => {
-            gsap.from('.story-section h2', {
-                y: 40,
+            // Gallery swiper text animations
+            gsap.from('.gallery-swiper .text-overlay h2', {
+                y: -40,
                 opacity: 0,
                 duration: 1,
+                ease: 'power3.out'
+            });
+            
+            gsap.from('.gallery-swiper .text-overlay p', {
+                y: 30,
+                opacity: 0,
+                duration: 0.8,
+                delay: 0.3,
+                ease: 'power2.out'
+            });
+            
+            gsap.from('.gallery-swiper .dots-container .dot', {
+                scale: 0,
+                rotation: 180,
+                opacity: 0,
+                duration: 0.6,
+                stagger: 0.1,
+                delay: 0.5,
+                ease: 'back.out(1.7)'
+            });
+            
+            // Different effect: dramatic entrance with rotation and scale
+            gsap.from('.hero-cta-group .cta-btn', {
+                rotation: 15,
+                scale: 0.8,
+                y: 40,
+                opacity: 0,
+                duration: 0.8,
+                stagger: 0.2,
+                ease: 'back.out(1.7)',
+                clearProps: 'all'
+            });
+            // Sections animate with different effects
+            gsap.from('.story-section .editorial-text > *', {
+                x: -50,
+                opacity: 0,
+                duration: 0.6,
+                stagger: 0.1,
+                delay: 0.4,
                 ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: '.story-section',
+                    start: 'top 80%'
+                }
+            });
+            gsap.from('.module-card', {
+                rotationY: 90,
+                opacity: 0,
+                duration: 0.7,
+                stagger: 0.15,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: '.modules-section',
+                    start: 'top 80%'
+                }
+            });
+            gsap.from('.stat', {
+                scale: 0,
+                opacity: 0,
+                duration: 0.6,
+                stagger: 0.1,
+                ease: 'elastic.out(1, 0.5)',
+                scrollTrigger: {
+                    trigger: '.stats-section',
+                    start: 'top 80%'
+                }
             });
         }, pageRef);
 
@@ -28,16 +96,21 @@ const MovementEpics = () => {
 
     return (
         <div className="vertical-page movement-epics-page" ref={pageRef}>
-            <header className="page-hero editorial has-bg">
-                <div className="hero-bg-wrapper">
-                    <img src={epicsHeroImg} alt={activeVertical.name} className="hero-bg-image" />
-                    <div className="hero-overlay"></div>
-                </div>
-                <div className="container">
-                    <div className="hero-content">
-                        <span className="subtitle">{activeVertical.name}</span>
-                        <h1 className="large-title">{activeVertical.cta}</h1>
-                        <p className="lead">{activeVertical.description}</p>
+            <header className="page-hero movement-epics-hero">
+                <GallerySwiper 
+                    title="Movement & Epics" 
+                    subtitle="Where History Meets Movement" 
+                />
+                <div className="hero-overlay-content">
+                    <div className="container">
+                        <div className="hero-cta-group">
+                            <Link to="/movement-epics/curriculum" className="cta-btn primary">
+                                Explore Curriculum
+                            </Link>
+                            <Link to="/movement-epics/apply" className="cta-btn secondary">
+                                Apply Now <span className="arrow">→</span>
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </header>
@@ -94,12 +167,12 @@ const MovementEpics = () => {
                 </div>
             </section>
 
-            <GallerySection images={[
-                'https://images.unsplash.com/photo-1503095396549-807759245b35?w=800',
-                'https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?w=800',
-                'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800',
-                'https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=800'
-            ]} />
+            <section className="gallery-section section">
+                <div className="container">
+                    <h2 className="section-title">Gallery</h2>
+                    <DynamicGallery vertical="movement-epics" />
+                </div>
+            </section>
         </div>
     );
 };

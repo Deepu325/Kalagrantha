@@ -22,6 +22,39 @@
         pointer-events: none;
     }
 
+    .admin-logo-landing {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 1001;
+
+        a {
+            text-decoration: none;
+        }
+
+        .logo-emblem {
+            width: 36px;
+            height: 36px;
+            background: #1a1a2e;
+            color: #d4af37;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+            border: 1.5px solid #d4af37;
+            transition: all 0.2s ease;
+            opacity: 0.7;
+
+            &:hover {
+                opacity: 1;
+                transform: scale(1.05);
+                box-shadow: 0 4px 12px rgba(26, 26, 46, 0.3);
+            }
+        }
+    }
+
     .landing-content {
         text-align: center;
         position: relative;
