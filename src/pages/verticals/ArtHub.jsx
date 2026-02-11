@@ -288,12 +288,7 @@ const ArtHub = () => {
                 </div>
             </section>
 
-            <GallerySection images={[
-                'https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=800',
-                'https://images.unsplash.com/photo-1518834107812-67b0b7c58434?w=800',
-                'https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?w=800',
-                'https://images.unsplash.com/photo-1535525153412-5a42439a210d?w=800'
-            ]} />
+            <GallerySection vertical="art-hub" />
         </div>
     );
 };

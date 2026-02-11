@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useAdmin } from '../../context/AdminContext';
 import './GallerySection.scss';
 
-const GallerySection = ({ images = [] }) => {
+const GallerySection = ({ vertical }) => {
+    const { galleries } = useAdmin();
+    const images = galleries[vertical] || [];
     const [lightboxOpen, setLightboxOpen] = useState(false);
     const [activeIndex, setActiveIndex] = useState(0);
 
