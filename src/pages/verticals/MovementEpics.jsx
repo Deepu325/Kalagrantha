@@ -96,7 +96,7 @@ const MovementEpics = () => {
 
     return (
         <div className="vertical-page movement-epics-page" ref={pageRef}>
-            <header className="page-hero movement-epics-hero">
+            <header className="page-hero movement-epics-hero" id="movement-epics-home">
                 <GallerySwiper 
                     title="Movement & Epics" 
                     subtitle="Where History Meets Movement" 
@@ -115,7 +115,11 @@ const MovementEpics = () => {
                 </div>
             </header>
 
-            <section className="story-section section">
+            <section className="curriculum-section section" id="movement-epics-curriculum">
+                {/* ...curriculum content... */}
+            </section>
+
+            <section className="story-section section" id="movement-epics-philosophy">
                 <div className="container">
                     <div className="editorial-layout">
                         <div className="editorial-text">
@@ -137,7 +141,7 @@ const MovementEpics = () => {
                 </div>
             </section>
 
-            <section className="modules-section section">
+            <section className="modules-section section" id="movement-epics-modules">
                 <div className="container">
                     <h2 className="section-title">Academic Modules</h2>
                     <div className="module-list">
@@ -152,6 +156,14 @@ const MovementEpics = () => {
                         ))}
                     </div>
                 </div>
+            </section>
+
+            <section className="institutions-section section" id="movement-epics-institutions">
+                {/* ...institutions content... */}
+            </section>
+
+            <section className="apply-section section" id="movement-epics-apply">
+                {/* ...apply content... */}
             </section>
 
             <section className="stats-section section">
