@@ -87,13 +87,17 @@ const Navbar = () => {
                     </div>
                 </div>
                 <div className="nav-right">
-                    <Link to="/contact" className="contact-btn">Contact</Link>
-                    <Link to="/admin/login" className="admin-logo-link">
-                        <div className="admin-logo">KA</div>
-                    </Link>
+                    {activeVertical && activeVertical.id === 'art-hub' && (
+                        <>
+                            <Link to="/contact" className="contact-btn">Contact</Link>
+                            <Link to="/admin/login" className="admin-logo-link">
+                                <div className="admin-logo">KA</div>
+                            </Link>
+                        </>
+                    )}
                 </div>
-                {/* Mobile Hamburger Toggle (Art Hub only) */}
-                {activeVertical && activeVertical.id === 'art-hub' && (
+                {/* Mobile Hamburger Toggle (Yoga TTC only) */}
+                {activeVertical && activeVertical.id === 'yoga-ttc' && (
                     <button
                         className={`mobile-menu-toggle ${isMobileMenuOpen ? 'active' : ''}`}
                         onClick={() => (isMobileMenuOpen ? closeMobileMenu() : openMobileMenu())}

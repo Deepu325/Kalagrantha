@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
+import YogaTTCMobileMenu from './YogaTTCMobileMenu';
 
 const YogaTTCCertification = () => {
     const pageRef = useRef(null);
@@ -28,6 +29,7 @@ const YogaTTCCertification = () => {
 
     return (
         <div className="yoga-ttc-subpage" ref={pageRef}>
+            <YogaTTCMobileMenu />
             <header className="subpage-hero">
                 <div className="hero-bg"></div>
                 <div className="container">
@@ -95,6 +97,7 @@ const YogaTTCFaculty = () => {
 
     return (
         <div className="yoga-ttc-subpage" ref={pageRef}>
+            <YogaTTCMobileMenu />
             <header className="subpage-hero">
                 <div className="hero-bg"></div>
                 <div className="container">
@@ -166,6 +169,7 @@ const YogaTTCEligibility = () => {
 
     return (
         <div className="yoga-ttc-subpage" ref={pageRef}>
+            <YogaTTCMobileMenu />
             <header className="subpage-hero">
                 <div className="hero-bg"></div>
                 <div className="container">
@@ -255,6 +259,7 @@ const YogaTTCRegister = () => {
 
     return (
         <div className="yoga-ttc-subpage" ref={pageRef}>
+            <YogaTTCMobileMenu />
             <header className="subpage-hero">
                 <div className="hero-bg"></div>
                 <div className="container">

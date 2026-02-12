@@ -1,3 +1,34 @@
+// --- 3-line menu toggle styles ---
+@media (max-width: 1024px) {
+    .yttc-mobile-menu-toggle {
+        background: #9333ea;
+        border: none;
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        z-index: 1200;
+        cursor: pointer;
+        box-shadow: 0 4px 16px rgba(147,51,234,0.15);
+    }
+    .menu-lines {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    .menu-lines .line {
+        width: 28px;
+        height: 3px;
+        background: #fff;
+        border-radius: 2px;
+        transition: all 0.3s;
+    }
+}
 .yoga-ttc-subpage {
     .subpage-hero {
         height: 40vh;
@@ -404,5 +435,109 @@
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
         }
+    }
+}
+// --- Yoga TTC Mobile Menu Styles ---
+@media (max-width: 1024px) {
+    .yttc-mobile-menu-toggle {
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        z-index: 1200;
+        background: #9333ea;
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        font-size: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 16px rgba(147,51,234,0.15);
+        cursor: pointer;
+    }
+    .yttc-mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(26,26,46,0.95);
+        z-index: 1199;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-end;
+        animation: fadeInMenu 0.3s;
+    }
+    .yttc-mobile-menu {
+        background: #fff;
+        width: 90vw;
+        max-width: 360px;
+        margin: 32px 16px 0 0;
+        border-radius: 16px;
+        box-shadow: 0 8px 32px rgba(147,51,234,0.18);
+        padding: 2rem 1rem;
+        position: relative;
+        z-index: 1201;
+        overflow-y: auto;
+    }
+    .yttc-mobile-menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .yttc-mobile-menu li {
+        margin-bottom: 1rem;
+        text-align: left;
+    }
+    .yttc-mobile-menu a {
+        color: #9333ea;
+        font-size: 1.1rem;
+        font-weight: 500;
+        text-decoration: none;
+        display: block;
+        padding: 0.75rem 0.5rem;
+        border-radius: 8px;
+        transition: background 0.2s;
+    }
+    .yttc-mobile-menu a:hover {
+        background: #f3e8ff;
+    }
+    .verticals-toggle {
+        background: none;
+        border: none;
+        color: #9333ea;
+        font-size: 1.1rem;
+        font-weight: 600;
+        width: 100%;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.75rem 0.5rem;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+    .toggle-icon {
+        font-size: 1.3rem;
+        margin-left: 8px;
+    }
+    .verticals-dropdown {
+        background: #f3e8ff;
+        border-radius: 8px;
+        margin-top: 0.5rem;
+        padding: 0.5rem 0;
+        box-shadow: 0 2px 8px rgba(147,51,234,0.08);
+    }
+    .verticals-dropdown a {
+        color: #6b21a8;
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+    }
+    @keyframes fadeInMenu {
+        from { opacity: 0; }
+        to { opacity: 1; }
     }
 }
