@@ -1018,12 +1018,13 @@
     // Yoga TTC: Curriculum
     .curriculum-breakdown {
         background: var(--bg-secondary);
-        padding: 4rem;
+        padding: 2rem 1rem;
         border: 1px solid var(--border-color);
 
         .curr-item-v2 {
             display: grid;
-            grid-template-columns: 1fr 200px;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
             padding: 1.5rem 0;
             border-bottom: 1px solid var(--border-color);
 
@@ -1039,6 +1040,21 @@
 
             &:last-child {
                 border-bottom: none;
+            }
+
+            @media (max-width: 768px) {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+                padding: 1rem 0;
+
+                h4 {
+                    font-size: 1rem;
+                }
+
+                .hours {
+                    text-align: left;
+                    font-size: 0.9rem;
+                }
             }
         }
     }
@@ -1353,9 +1369,15 @@
     @media (max-width: 768px) {
         height: 70vh;
         min-height: 500px;
+        padding: 5rem 1rem 3rem;
+        
+        .container {
+            padding: 0 1rem;
+        }
         
         .zen-overlay-content {
-            bottom: 80px;
+            bottom: 60px;
+            padding: 0 1rem;
             
             .interactive-text-section {
                 margin-bottom: 2rem;
@@ -1379,9 +1401,12 @@
                 flex-direction: column;
                 align-items: center;
                 gap: 1rem;
+                width: 100%;
                 
                 .zen-btn {
                     padding: 12px 24px;
+                    width: 100%;
+                    justify-content: center;
                     
                     .btn-text {
                         font-size: 0.9rem;
@@ -1393,9 +1418,12 @@
     
     @media (max-width: 480px) {
         height: 60vh;
-        min-height: 400px;
+        min-height: 350px;
+        padding: 4rem 0.75rem 2rem;
         
         .zen-overlay-content {
+            bottom: 40px;
+            
             .interactive-text-section {
                 .zen-quote {
                     .quote-text {
@@ -1405,6 +1433,15 @@
                     .quote-highlight {
                         font-size: 1.3rem;
                     }
+                }
+            }
+            
+            .zen-cta-group {
+                gap: 0.75rem;
+                
+                .zen-btn {
+                    padding: 10px 20px;
+                    font-size: 0.85rem;
                 }
             }
         }
