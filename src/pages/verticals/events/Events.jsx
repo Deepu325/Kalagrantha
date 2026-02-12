@@ -1,8 +1,10 @@
 import React from 'react';
-import { useNav } from '../../context/NavContext';
-import DynamicGallery from '../../components/sections/DynamicGallery';
-import eventsHeroImg from '../../assets/images/events_hero_bg.png';
-import './VerticalPage.scss';
+import { useNav } from '../../../context/NavContext';
+import EventsNavbar from './EventsNavbar';
+import EventsHeroSwiper from './EventsHeroSwiper';
+import DynamicGallery from '../../../components/sections/DynamicGallery';
+import '../VerticalPage.scss';
+import './EventsHeroSwiper.scss';
 
 const Events = () => {
     const { activeVertical } = useNav();
@@ -10,20 +12,8 @@ const Events = () => {
 
     return (
         <div className="vertical-page events-page">
-            <header className="page-hero video-bg has-bg">
-                <div className="hero-bg-wrapper">
-                    <img src={eventsHeroImg} alt={activeVertical.name} className="hero-bg-image" />
-                    <div className="hero-overlay"></div>
-                </div>
-                <div className="container">
-                    <div className="hero-content">
-                        <span className="subtitle">{activeVertical.name}</span>
-                        <h1 className="bold-title">{activeVertical.cta.toUpperCase()}</h1>
-                        <p>{activeVertical.description}</p>
-                        <button className="cta-button">Book Us</button>
-                    </div>
-                </div>
-            </header>
+            <EventsNavbar />
+            <EventsHeroSwiper />
 
             <section className="services section">
                 <div className="container">

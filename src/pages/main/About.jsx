@@ -1,10 +1,60 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './About.scss';
 
+gsap.registerPlugin(ScrollTrigger);
+
 const About = () => {
+    const pageRef = useRef(null);
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            // Hero animations - medium effects
+            gsap.from('.about-hero h1', { 
+                y: 40, 
+                opacity: 0, 
+                duration: 0.8, 
+                ease: 'power2.out', 
+                clearProps: 'all' 
+            });
+            gsap.from('.about-hero .lead', { 
+                y: 30, 
+                opacity: 0, 
+                duration: 0.6, 
+                delay: 0.2, 
+                ease: 'power2.out', 
+                clearProps: 'all' 
+            });
+
+            // Content animations - medium effects
+            gsap.from('.content-wrapper p', { 
+                y: 30, 
+                opacity: 0, 
+                duration: 0.6, 
+                delay: 0.3, 
+                stagger: 0.1, 
+                ease: 'power2.out', 
+                scrollTrigger: { trigger: '.content-wrapper', start: 'top 80%' }, 
+                clearProps: 'all' 
+            });
+            gsap.from('.cta-section .about-cta-button', { 
+                y: 25, 
+                opacity: 0, 
+                duration: 0.5, 
+                delay: 0.8, 
+                stagger: 0.08, 
+                ease: 'back.out(1.2)', 
+                scrollTrigger: { trigger: '.cta-section', start: 'top 80%' }, 
+                clearProps: 'all' 
+            });
+        }, pageRef);
+
+        return () => ctx.revert();
+    }, []);
     return (
-        <div className="about-page">
+        <div className="about-page" ref={pageRef}>
             <section className="about-hero">
                 <div className="container">
                     <h1>About Kalagrantha</h1>
@@ -32,7 +82,7 @@ const About = () => {
                         </p>
                         <div className="cta-section">
                             <Link to="/contact" className="about-cta-button">Get in Touch</Link>
-                            <Link to="/" className="about-cta-button secondary">Explore Programs</Link>
+                            <Link to="/home" className="about-cta-button secondary">Explore Programs</Link>
                         </div>
                     </div>
                 </div>

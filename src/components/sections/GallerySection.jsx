@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useAdmin } from '../../context/AdminContext';
+import { useAdmin } from '../../context/useAdmin';
 import './GallerySection.scss';
+
 
 const GallerySection = ({ vertical }) => {
     const { galleries } = useAdmin();

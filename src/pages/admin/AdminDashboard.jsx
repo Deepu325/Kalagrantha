@@ -5,6 +5,7 @@ import GalleryManager from '../../components/admin/GalleryManager';
 import HeroUpload from '../../components/admin/HeroUpload';
 import HeroManager from '../../components/admin/HeroManager';
 import EnquiryManager from '../../components/admin/EnquiryManager';
+import CreativeHubGalleryManager from '../../components/admin/CreativeHubGalleryManager';
 import './AdminDashboard.scss';
 
 const AdminDashboard = () => {
@@ -40,6 +41,8 @@ const AdminDashboard = () => {
                 return <HeroUpload />;
             case 'hero-manage':
                 return <HeroManager />;
+            case 'creative-hub-gallery':
+                return <CreativeHubGalleryManager />;
             case 'enquiries':
                 return <EnquiryManager />;
             default:
@@ -87,6 +90,13 @@ const AdminDashboard = () => {
                         Manage Heroes
                     </button>
                     <button
+                        className={`nav-item ${activeTab === 'creative-hub-gallery' ? 'active' : ''}`}
+                        onClick={() => setActiveTab('creative-hub-gallery')}
+                    >
+                        <span className="nav-icon">🎪</span>
+                        Creative Hub Gallery
+                    </button>
+                    <button
                         className={`nav-item ${activeTab === 'enquiries' ? 'active' : ''}`}
                         onClick={() => setActiveTab('enquiries')}
                     >
@@ -105,7 +115,7 @@ const AdminDashboard = () => {
 
             <div className="dashboard-content">
                 <div className="content-header">
-                    <h1>{activeTab === 'upload' ? 'Upload Gallery' : activeTab === 'manage' ? 'Manage Images' : activeTab === 'hero-upload' ? 'Upload Hero Images' : activeTab === 'hero-manage' ? 'Manage Hero Images' : 'Enquiries'}</h1>
+                    <h1>{activeTab === 'upload' ? 'Upload Gallery' : activeTab === 'manage' ? 'Manage Images' : activeTab === 'hero-upload' ? 'Upload Hero Images' : activeTab === 'hero-manage' ? 'Manage Hero Images' : activeTab === 'creative-hub-gallery' ? 'Creative Hub Gallery' : 'Enquiries'}</h1>
                 </div>
                 <div className="content-body">
                     {renderContent()}

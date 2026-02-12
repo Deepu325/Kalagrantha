@@ -1,0 +1,370 @@
+.global-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--nav-height);
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(6px);
+    z-index: 1000;
+    transition: var(--transition-smooth);
+    display: flex;
+    align-items: center;
+
+    &.mega-menu-open {
+        background: rgba(0, 0, 0, 0.9);
+    }
+
+    .nav-container {
+        width: 100%;
+        max-width: var(--container-width);
+        margin: 0 auto;
+        padding: 0 var(--container-padding);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        display: flex;
+        flex-direction: column;
+        color: white;
+
+        .logo-text {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo-sub {
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            opacity: 0.9;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+    }
+
+    .nav-links,
+    .vertical-links {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+
+        a {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            color: white;
+            text-decoration: none;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background: #d4af37;
+                transition: var(--transition-fast);
+            }
+
+            &:hover::after,
+            &.active::after {
+                width: 100%;
+            }
+
+            &:hover {
+                color: #d4af37;
+            }
+        }
+    }
+
+    .has-mega-menu {
+        position: relative;
+        padding: 0.5rem 0;
+        cursor: pointer;
+
+        .mega-trigger {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            
+            &:hover {
+                color: #d4af37;
+            }
+        }
+
+        .mega-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            width: 800px;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(15px);
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition-smooth);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        &:hover .mega-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .mega-menu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .mega-item {
+            padding: 1rem;
+            border: 1px solid transparent;
+            color: white;
+
+            h3 {
+                font-family: var(--font-main);
+                font-size: 1rem;
+                margin-bottom: 0.25rem;
+                color: white;
+            }
+
+            p {
+                font-size: 0.75rem;
+                opacity: 0.6;
+                color: white;
+            }
+
+            &:hover {
+                border-color: rgba(255, 255, 255, 0.2);
+                background: rgba(220, 38, 38, 0.8);
+            }
+        }
+    }
+
+    .nav-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+    }
+
+    .vertical-nav-container {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+
+        .vertical-title {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            font-weight: 700;
+            padding-right: 2rem;
+            border-right: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+
+            &:hover {
+                color: #d4af37;
+            }
+        }
+    }
+
+    .nav-links.vertical-active {
+        border-left: 1px solid rgba(255, 255, 255, 0.3);
+        padding-left: 3rem;
+
+        .mega-trigger {
+            font-weight: 600;
+            color: white;
+            position: relative;
+        }
+    }
+
+    .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .admin-logo-nav {
+        text-decoration: none;
+        
+        .logo-emblem {
+            width: 32px;
+            height: 32px;
+            background: rgba(26, 26, 46, 0.8);
+            color: #d4af37;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border: 1.5px solid #d4af37;
+            transition: all 0.2s ease;
+            opacity: 0.9;
+
+            &:hover {
+                opacity: 1;
+                transform: scale(1.05);
+                box-shadow: 0 4px 12px rgba(26, 26, 46, 0.5);
+            }
+        }
+    }
+
+    .cta-button {
+        background: #d4af37;
+        color: #1a1a2e !important;
+        padding: 0.75rem 1.5rem;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        text-shadow: none;
+
+        &:hover {
+            background: rgba(26, 26, 46, 0.9);
+            color: #d4af37 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(26, 26, 46, 0.5);
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .nav-wrapper {
+            gap: 1.5rem;
+        }
+
+        .nav-links,
+        .vertical-links {
+            gap: 1rem;
+
+            a {
+                font-size: 0.85rem;
+            }
+        }
+
+        .has-mega-menu .mega-menu {
+            width: 600px;
+
+            .mega-menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        height: auto;
+        min-height: var(--nav-height);
+
+        .nav-container {
+            flex-wrap: wrap;
+            padding: 1rem var(--container-padding);
+        }
+
+        .logo {
+            .logo-text {
+                font-size: 1.2rem;
+            }
+
+            .logo-sub {
+                font-size: 0.6rem;
+            }
+        }
+
+        .nav-wrapper {
+            width: 100%;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .nav-links,
+        .vertical-links {
+            width: 100%;
+            flex-direction: column;
+            gap: 0.5rem;
+            border: none !important;
+            padding: 0 !important;
+
+            a {
+                width: 100%;
+                text-align: center;
+                padding: 0.75rem;
+                background: rgba(0,0,0,0.3);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+            }
+        }
+
+        .vertical-nav-container {
+            width: 100%;
+            flex-direction: column;
+            gap: 1rem;
+
+            .vertical-title {
+                border: none;
+                padding: 0;
+                text-align: center;
+            }
+        }
+
+        .has-mega-menu {
+            width: 100%;
+
+            .mega-trigger {
+                width: 100%;
+                text-align: center;
+                padding: 0.75rem;
+                background: rgba(0,0,0,0.3);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+            }
+
+            .mega-menu {
+                position: static;
+                width: 100%;
+                transform: none;
+                margin-top: 0.5rem;
+
+                .mega-menu-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            &:hover .mega-menu {
+                transform: none;
+            }
+        }
+
+        .cta-button {
+            width: 100%;
+            text-align: center;
+        }
+
+        .admin-logo-nav {
+            .logo-emblem {
+                width: 28px;
+                height: 28px;
+                font-size: 0.75rem;
+            }
+        }
+    }
+}

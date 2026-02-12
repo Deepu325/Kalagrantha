@@ -10,7 +10,6 @@ const ArtHub = () => {
     const pageRef = useRef(null);
     const { activeVertical } = useNav();
     const [activeTab, setActiveTab] = React.useState(0);
-    const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 });
     const [activeGallery, setActiveGallery] = React.useState(0);
 
     const tabContent = [
@@ -20,19 +19,11 @@ const ArtHub = () => {
     ];
 
     useEffect(() => {
-        const handleMouseMove = (e) => {
-            setMousePosition({ x: e.clientX, y: e.clientY });
-        };
-        window.addEventListener('mousemove', handleMouseMove);
-        return () => window.removeEventListener('mousemove', handleMouseMove);
-    }, []);
-
-    useEffect(() => {
         const interval = setInterval(() => {
             setActiveGallery((prev) => (prev + 1) % tabContent.length);
         }, 5000);
         return () => clearInterval(interval);
-    }, []);
+    }, [tabContent.length]);
 
     useEffect(() => {
         if (!pageRef.current) return;
@@ -173,10 +164,11 @@ const ArtHub = () => {
                 </div>
                 <div className="hero-gallery-preview">
                     {tabContent.map((tab, i) => (
-                        <div 
-                            key={i} 
+                        <img
+                            key={i}
+                            src={tab.img}
+                            alt={tab.title}
                             className={`gallery-preview-item ${activeGallery === i ? 'active' : ''}`}
-                            style={{ backgroundImage: `url(${tab.img})` }}
                         />
                     ))}
                 </div>

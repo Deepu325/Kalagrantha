@@ -1,57 +1,13 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-
-const AdminContext = createContext();
-
-export const useAdmin = () => {
-    const context = useContext(AdminContext);
-    if (!context) {
-        throw new Error('useAdmin must be used within AdminProvider');
-    }
-    return context;
-};
+import React, { useState } from 'react';
+import { AdminContext } from './createAdminContext';
 
 export const AdminProvider = ({ children }) => {
-    const [isAdmin, setIsAdmin] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(() => {
+        const token = localStorage.getItem('adminToken');
+        return token === 'fallback-token';
+    });
     const [galleries, setGalleries] = useState({});
     const [events, setEvents] = useState({});
-
-    useEffect(() => {
-        const token = localStorage.getItem('adminToken');
-        if (token) {
-            // Verify token validity
-            verifyToken(token);
-        }
-    }, []);
-
-    const verifyToken = async (token) => {
-        if (token === 'fallback-token') {
-            setIsAdmin(true);
-            return;
-        }
-        
-        try {
-            const response = await fetch('http://localhost:5000/api/admin/gallery', {
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            });
-            
-            if (response.ok) {
-                setIsAdmin(true);
-            } else {
-                localStorage.removeItem('adminToken');
-                setIsAdmin(false);
-            }
-        } catch (error) {
-            // Keep admin status for fallback token
-            if (token === 'fallback-token') {
-                setIsAdmin(true);
-            } else {
-                localStorage.removeItem('adminToken');
-                setIsAdmin(false);
-            }
-        }
-    };
 
     const login = async (email, password) => {
         try {
@@ -70,7 +26,7 @@ export const AdminProvider = ({ children }) => {
             } else {
                 return { success: false, error: data.error };
             }
-        } catch (error) {
+        } catch {
             return { success: false, error: 'Connection error' };
         }
     };

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useAdmin } from '../../context/AdminContext';
+import { useAdmin } from '../../context/useAdmin';
 import { useNavigate } from 'react-router-dom';
 import { VERTICALS } from '../../constants/verticals';
 import './AdminPanel.scss';

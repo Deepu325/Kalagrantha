@@ -30,11 +30,11 @@ const AdminLogin = () => {
             }
         } catch (error) {
             // Fallback authentication when server is down
-            if (credentials.email === 'admin@kalagrantha.com' && credentials.password === 'KA2024@secure') {
+            if (credentials.email === 'admin' && credentials.password === 'kalagrantha2024') {
                 localStorage.setItem('adminToken', 'fallback-token');
                 navigate('/admin/dashboard');
             } else {
-                setError('Server unavailable. Use: admin@kalagrantha.com / KA2024@secure');
+                setError('Server unavailable. Use: admin / kalagrantha2024');
             }
         } finally {
             setLoading(false);
@@ -53,14 +53,14 @@ const AdminLogin = () => {
 
                 <form onSubmit={handleSubmit} className="login-form">
                     <div className="form-group">
-                        <label htmlFor="email">Email</label>
+                        <label htmlFor="email">Username</label>
                         <input
-                            type="email"
+                            type="text"
                             id="email"
                             value={credentials.email}
                             onChange={(e) => setCredentials({...credentials, email: e.target.value})}
                             required
-                            placeholder="admin@kalagrantha.com"
+                            placeholder="admin"
                         />
                     </div>
 

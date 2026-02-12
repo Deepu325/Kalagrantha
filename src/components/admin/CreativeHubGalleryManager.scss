@@ -1,0 +1,230 @@
+.creative-hub-gallery-manager {
+    padding: 2rem;
+    background: #FFFFFF;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+
+    .manager-header {
+        text-align: center;
+        margin-bottom: 3rem;
+        
+        h2 {
+            color: #7C3AED;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        p {
+            color: #6B7280;
+            font-size: 1.1rem;
+        }
+    }
+
+    .add-item-section {
+        background: linear-gradient(135deg, #F8FAFC, #E2E8F0);
+        padding: 2rem;
+        border-radius: 15px;
+        margin-bottom: 3rem;
+        border: 1px solid rgba(124, 58, 237, 0.1);
+        
+        h3 {
+            color: #7C3AED;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .add-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            align-items: end;
+            
+            input, select {
+                padding: 0.75rem;
+                border: 1px solid rgba(124, 58, 237, 0.2);
+                border-radius: 10px;
+                font-size: 1rem;
+                transition: all 0.3s ease;
+                
+                &:focus {
+                    outline: none;
+                    border-color: #7C3AED;
+                    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+                }
+            }
+            
+            button {
+                background: linear-gradient(135deg, #7C3AED, #9333EA);
+                color: white;
+                padding: 0.75rem 1.5rem;
+                border: none;
+                border-radius: 10px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                
+                &:hover {
+                    background: linear-gradient(135deg, #9333EA, #7C3AED);
+                    transform: translateY(-2px);
+                    box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
+                }
+            }
+        }
+    }
+
+    .gallery-items-section {
+        h3 {
+            color: #7C3AED;
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #6B7280;
+            
+            .empty-icon {
+                font-size: 4rem;
+                margin-bottom: 1rem;
+            }
+            
+            p {
+                font-size: 1.1rem;
+            }
+        }
+        
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .gallery-item-card {
+            background: white;
+            border: 1px solid rgba(124, 58, 237, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(124, 58, 237, 0.1);
+            transition: all 0.3s ease;
+            
+            &:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px rgba(124, 58, 237, 0.15);
+            }
+            
+            .item-preview {
+                height: 200px;
+                position: relative;
+                background: #F3F4F6;
+                overflow: hidden;
+                
+                .preview-media {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    transition: transform 0.3s ease;
+                }
+                
+                &:hover .preview-media {
+                    transform: scale(1.05);
+                }
+                
+                .type-badge {
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    background: rgba(124, 58, 237, 0.9);
+                    color: white;
+                    padding: 0.3rem 0.8rem;
+                    border-radius: 15px;
+                    font-size: 0.8rem;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                }
+            }
+            
+            .item-details {
+                padding: 1.5rem;
+                
+                h4 {
+                    color: #7C3AED;
+                    margin-bottom: 0.5rem;
+                    font-size: 1.2rem;
+                    font-weight: 600;
+                    line-height: 1.3;
+                }
+                
+                .artist {
+                    color: #374151;
+                    margin-bottom: 0.5rem;
+                    font-size: 1rem;
+                    font-weight: 500;
+                }
+                
+                .medium {
+                    color: #6B7280;
+                    font-size: 0.9rem;
+                    background: rgba(124, 58, 237, 0.1);
+                    padding: 0.3rem 0.8rem;
+                    border-radius: 15px;
+                    display: inline-block;
+                    margin-bottom: 1rem;
+                    font-weight: 500;
+                }
+                
+                .item-actions {
+                    display: flex;
+                    gap: 0.5rem;
+                    
+                    .delete-btn {
+                        background: linear-gradient(135deg, #EF4444, #DC2626);
+                        color: white;
+                        border: none;
+                        padding: 0.5rem 1rem;
+                        border-radius: 8px;
+                        font-size: 0.9rem;
+                        font-weight: 600;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        flex: 1;
+                        
+                        &:hover {
+                            background: linear-gradient(135deg, #DC2626, #EF4444);
+                            transform: translateY(-2px);
+                            box-shadow: 0 5px 15px rgba(239, 68, 68, 0.3);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .creative-hub-gallery-manager {
+        padding: 1.5rem;
+        
+        .manager-header h2 {
+            font-size: 2rem;
+        }
+        
+        .add-item-section {
+            padding: 1.5rem;
+            
+            .add-form {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .gallery-items-section .items-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+}

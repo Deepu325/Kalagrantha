@@ -1,0 +1,22 @@
+Creative Hub Gallery Images Required:
+
+1. digital-studio.jpg - Digital art workspace with computers and creative tools
+2. collaborative-space.jpg - Open collaborative workspace with people working
+3. gallery-exhibition.jpg - Art gallery with exhibitions and artwork displays  
+4. workshop-studio.jpg - Workshop space with creative equipment and materials
+
+Image specifications:
+- Resolution: 1920x1080px minimum
+- Format: JPG or PNG
+- Aspect ratio: 16:9
+- High quality, professional photography
+- Creative hub/studio atmosphere
+- Good lighting and composition
+
+Place these images in: /public/images/creative-hub/
+
+Current gallery swiper paths:
+- /images/creative-hub/digital-studio.jpg
+- /images/creative-hub/collaborative-space.jpg
+- /images/creative-hub/gallery-exhibition.jpg
+- /images/creative-hub/workshop-studio.jpg

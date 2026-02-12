@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useNav } from '../../context/NavContext';
 import { VERTICALS } from '../../constants/verticals';
@@ -7,9 +7,34 @@ import './Navbar.scss';
 const Navbar = () => {
     const { activeVertical } = useNav();
     const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isVerticalsExpanded, setIsVerticalsExpanded] = useState(false);
+
+    // Close mobile menu on escape key
+    useEffect(() => {
+        const handleEscape = (e) => {
+            if (e.key === 'Escape' && isMobileMenuOpen) {
+                setIsMobileMenuOpen(false);
+            }
+        };
+        document.addEventListener('keydown', handleEscape);
+        return () => document.removeEventListener('keydown', handleEscape);
+    }, [isMobileMenuOpen]);
+
+    // Disable scroll when mobile menu is open
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [isMobileMenuOpen]);
 
     return (
-        <nav className={`global-nav ${isMegaMenuOpen ? 'mega-menu-open' : ''}`}>
+        <nav className={`global-nav ${isMegaMenuOpen ? 'mega-menu-open' : ''} ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}>
             <div className="nav-container">
                 <div className="nav-left">
                     <Link to="/" className="logo">
@@ -36,7 +61,6 @@ const Navbar = () => {
 
                         <ul className={`nav-links ${activeVertical ? 'vertical-active' : ''}`}>
                             {!activeVertical && <li><NavLink to="/">Home</NavLink></li>}
-
                             <li
                                 onMouseEnter={() => setIsMegaMenuOpen(true)}
                                 onMouseLeave={() => setIsMegaMenuOpen(false)}
@@ -54,24 +78,40 @@ const Navbar = () => {
                                     </div>
                                 </div>
                             </li>
-
-                            {!activeVertical && (
-                                <>
-                                    <li><NavLink to="/about">About</NavLink></li>
-                                    <li><NavLink to="/calendar">Calendar</NavLink></li>
-                                    <li><NavLink to="/collaborate">Collaborate</NavLink></li>
-                                </>
-                            )}
                         </ul>
                     </div>
                 </div>
-
                 <div className="nav-right">
-                    <Link to="/contact" className="cta-button">Contact</Link>
-                    <Link to="/admin/login" className="admin-logo-nav">
-                        <div className="logo-emblem">KA</div>
+                    <Link to="/contact" className="contact-btn">Contact</Link>
+                    <Link to="/admin/login" className="admin-logo-link">
+                        <div className="admin-logo">KA</div>
                     </Link>
                 </div>
+                {/* Mobile Hamburger Toggle (Art Hub only) */}
+                {activeVertical && activeVertical.id === 'art-hub' && (
+                    <button 
+                        className={`mobile-menu-toggle ${isMobileMenuOpen ? 'active' : ''}`}
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    >
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                )}
+                {/* Mobile Overlay Menu (Art Hub only) */}
+                {activeVertical && activeVertical.id === 'art-hub' && (
+                    <div className={`mobile-overlay ${isMobileMenuOpen ? 'active' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>
+                        <div className="mobile-menu" onClick={e => e.stopPropagation()}>
+                            <nav className="mobile-nav">
+                                <Link to="/art-hub/overview" onClick={() => setIsMobileMenuOpen(false)}>Overview</Link>
+                                <Link to="/art-hub/classes" onClick={() => setIsMobileMenuOpen(false)}>Classes</Link>
+                                <Link to="/art-hub/faculty" onClick={() => setIsMobileMenuOpen(false)}>Faculty</Link>
+                                <Link to="/art-hub/timetable" onClick={() => setIsMobileMenuOpen(false)}>Timetable</Link>
+                                <Link to="/art-hub/enroll" onClick={() => setIsMobileMenuOpen(false)}>Enroll</Link>
+                            </nav>
+                        </div>
+                    </div>
+                )}
             </div>
         </nav>
     );

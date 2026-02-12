@@ -5,6 +5,7 @@ import Navbar from './Navbar';
 import MainNavbar from './MainNavbar';
 import SubNavbar from './SubNavbar';
 import MovementEpicsNavbar from './MovementEpicsNavbar';
+import CreativeHubNavbar from '../../pages/verticals/creative-hub/CreativeHubNavbar';
 import Footer from './Footer';
 import { NavProvider } from '../../context/NavContext';
 
@@ -12,6 +13,7 @@ const MainLayout = () => {
     const scrollRef = useRef(null);
     const location = useLocation();
     const isMainPage = location.pathname === '/home';
+    const isCreativeHubPage = location.pathname.startsWith('/creative-hub');
     const isMovementEpicsPage = location.pathname.startsWith('/movement-epics');
     const isVerticalPage = location.pathname.startsWith('/art-hub') || 
                           location.pathname.startsWith('/yoga-ttc') || 
@@ -39,6 +41,7 @@ const MainLayout = () => {
 
     const getNavbar = () => {
         if (isMainPage) return <MainNavbar />;
+        if (isCreativeHubPage) return <CreativeHubNavbar />;
         if (isMovementEpicsPage) return <MovementEpicsNavbar />;
         if (isVerticalPage) return <Navbar />;
         return <SubNavbar />;

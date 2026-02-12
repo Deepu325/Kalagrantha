@@ -2,9 +2,11 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AdminProvider } from './context/AdminContext';
 import MainLayout from './components/layout/MainLayout';
-import Landing from './pages/parent/Landing';
-import ParentHome from './pages/parent/ParentHome';
-import About from './pages/parent/About';
+import Landing from './pages/main/Landing';
+import ParentHome from './pages/main/ParentHome';
+import About from './pages/main/About';
+import Calendar from './pages/main/Calendar';
+import Collaborate from './pages/main/Collaborate';
 import ArtHub from './pages/verticals/ArtHub';
 import ArtHubOverview from './pages/verticals/art-hub/ArtHubOverview';
 import ArtHubClasses from './pages/verticals/art-hub/ArtHubClasses';
@@ -20,9 +22,19 @@ import MovementEpicsApply from './pages/verticals/movement-epics/MovementEpicsAp
 import YogaTTC from './pages/verticals/YogaTTC';
 import YogaTTCProgram from './pages/verticals/yoga-ttc/YogaTTCProgram';
 import { YogaTTCCertification, YogaTTCFaculty, YogaTTCEligibility, YogaTTCRegister } from './pages/verticals/yoga-ttc/YogaTTCSubPages';
-import CreativeHub from './pages/verticals/CreativeHub';
-import Events from './pages/verticals/Events';
-import Contact from './pages/parent/Contact';
+import CreativeHub from './pages/verticals/creative-hub/CreativeHub';
+import CreativeHubResidency from './pages/verticals/creative-hub/CreativeHubResidency';
+import CreativeHubCollaborations from './pages/verticals/creative-hub/CreativeHubCollaborations';
+import CreativeHubStudioSpace from './pages/verticals/creative-hub/CreativeHubStudioSpace';
+import CreativeHubGallery from './pages/verticals/creative-hub/CreativeHubGallery';
+import CreativeHubConnect from './pages/verticals/creative-hub/CreativeHubConnect';
+import Events from './pages/verticals/events/Events';
+import EventsServices from './pages/verticals/events/EventsServices';
+import EventsPastEvents from './pages/verticals/events/EventsPastEvents';
+import EventsArtists from './pages/verticals/events/EventsArtists';
+import EventsClients from './pages/verticals/events/EventsClients';
+import EventsBookUs from './pages/verticals/events/EventsBookUs';
+import Contact from './pages/main/Contact';
 import AdminLogin from './pages/admin/AdminLogin';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import './styles/main.scss';
@@ -56,12 +68,22 @@ function App() {
             <Route path="yoga-ttc/eligibility" element={<YogaTTCEligibility />} />
             <Route path="yoga-ttc/register" element={<YogaTTCRegister />} />
             <Route path="creative-hub" element={<CreativeHub />} />
+            <Route path="creative-hub/residency" element={<CreativeHubResidency />} />
+            <Route path="creative-hub/collaborations" element={<CreativeHubCollaborations />} />
+            <Route path="creative-hub/studio-space" element={<CreativeHubStudioSpace />} />
+            <Route path="creative-hub/gallery" element={<CreativeHubGallery />} />
+            <Route path="creative-hub/connect" element={<CreativeHubConnect />} />
             <Route path="events-entertainment" element={<Events />} />
+            <Route path="events-entertainment/services" element={<EventsServices />} />
+            <Route path="events-entertainment/past-events" element={<EventsPastEvents />} />
+            <Route path="events-entertainment/artists" element={<EventsArtists />} />
+            <Route path="events-entertainment/clients" element={<EventsClients />} />
+            <Route path="events-entertainment/book-us" element={<EventsBookUs />} />
 
             {/* Fallback or other global pages */}
             <Route path="about" element={<About />} />
-            <Route path="calendar" element={<div className="container section"><h1>Event Calendar</h1></div>} />
-            <Route path="collaborate" element={<div className="container section"><h1>Collaborate</h1></div>} />
+            <Route path="calendar" element={<Calendar />} />
+            <Route path="collaborate" element={<Collaborate />} />
             <Route path="contact" element={<Contact />} />
           </Route>
         </Routes>
