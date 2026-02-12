@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import DynamicGallery from '../../../components/sections/DynamicGallery';
+import YogaTTCMobileNavbar from './YogaTTCMobileNavbar';
 import './YogaTTCPages.scss';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -26,6 +27,7 @@ const YogaTTCProgram = () => {
 
     return (
         <div className="yoga-ttc-subpage" ref={pageRef}>
+            <YogaTTCMobileNavbar />
             <header className="subpage-hero">
                 <div className="hero-bg"></div>
                 <div className="container">

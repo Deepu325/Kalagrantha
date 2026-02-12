@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useNav } from '../../context/NavContext';
 import DynamicGallery from '../../components/sections/DynamicGallery';
 import YogaGallerySwiper from '../../components/sections/YogaGallerySwiper';
+import YogaTTCMobileNavbar from './yoga-ttc/YogaTTCMobileNavbar';
 import './VerticalPage.scss';
 
 const YogaTTC = () => {
@@ -11,6 +12,7 @@ const YogaTTC = () => {
 
     return (
         <div className="vertical-page yoga-ttc-page">
+            <YogaTTCMobileNavbar />
             <header className="page-hero yoga-ttc-zen-hero">
                 <YogaGallerySwiper 
                     title="Yoga Teacher Training" 
