@@ -14,24 +14,29 @@ const Navbar = () => {
     useEffect(() => {
         const handleEscape = (e) => {
             if (e.key === 'Escape' && isMobileMenuOpen) {
-                setIsMobileMenuOpen(false);
+                closeMobileMenu();
             }
         };
         document.addEventListener('keydown', handleEscape);
         return () => document.removeEventListener('keydown', handleEscape);
     }, [isMobileMenuOpen]);
 
-    // Disable scroll when mobile menu is open
-    useEffect(() => {
-        if (isMobileMenuOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'unset';
+    // Helpers to open/close mobile menu and avoid layout shift
+    const openMobileMenu = () => {
+        // reserve scrollbar width to avoid page jump
+        const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+        if (scrollBarWidth > 0) {
+            document.body.style.paddingRight = `${scrollBarWidth}px`;
         }
-        return () => {
-            document.body.style.overflow = 'unset';
-        };
-    }, [isMobileMenuOpen]);
+        document.body.classList.add('no-scroll');
+        setIsMobileMenuOpen(true);
+    };
+
+    const closeMobileMenu = () => {
+        setIsMobileMenuOpen(false);
+        document.body.classList.remove('no-scroll');
+        document.body.style.paddingRight = '';
+    };
 
     return (
         <nav className={`global-nav ${isMegaMenuOpen ? 'mega-menu-open' : ''} ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}>
@@ -89,9 +94,11 @@ const Navbar = () => {
                 </div>
                 {/* Mobile Hamburger Toggle (Art Hub only) */}
                 {activeVertical && activeVertical.id === 'art-hub' && (
-                    <button 
+                    <button
                         className={`mobile-menu-toggle ${isMobileMenuOpen ? 'active' : ''}`}
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        onClick={() => (isMobileMenuOpen ? closeMobileMenu() : openMobileMenu())}
+                        aria-expanded={isMobileMenuOpen}
+                        aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
                     >
                         <span></span>
                         <span></span>
@@ -100,14 +107,19 @@ const Navbar = () => {
                 )}
                 {/* Mobile Overlay Menu (Art Hub only) */}
                 {activeVertical && activeVertical.id === 'art-hub' && (
-                    <div className={`mobile-overlay ${isMobileMenuOpen ? 'active' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>
+                    <div className={`mobile-overlay ${isMobileMenuOpen ? 'active' : ''}`} onClick={() => closeMobileMenu()} role="dialog" aria-hidden={!isMobileMenuOpen}>
                         <div className="mobile-menu" onClick={e => e.stopPropagation()}>
                             <nav className="mobile-nav">
-                                <Link to="/art-hub/overview" onClick={() => setIsMobileMenuOpen(false)}>Overview</Link>
-                                <Link to="/art-hub/classes" onClick={() => setIsMobileMenuOpen(false)}>Classes</Link>
-                                <Link to="/art-hub/faculty" onClick={() => setIsMobileMenuOpen(false)}>Faculty</Link>
-                                <Link to="/art-hub/timetable" onClick={() => setIsMobileMenuOpen(false)}>Timetable</Link>
-                                <Link to="/art-hub/enroll" onClick={() => setIsMobileMenuOpen(false)}>Enroll</Link>
+                                <Link to="/art-hub/overview" onClick={() => closeMobileMenu()}>Overview</Link>
+                                <Link to="/art-hub/classes" onClick={() => closeMobileMenu()}>Classes</Link>
+                                <Link to="/art-hub/faculty" onClick={() => closeMobileMenu()}>Faculty</Link>
+                                <Link to="/art-hub/timetable" onClick={() => closeMobileMenu()}>Timetable</Link>
+                                <Link to="/art-hub/enroll" onClick={() => closeMobileMenu()}>Enroll</Link>
+
+                                <div className="mobile-divider" aria-hidden="true" />
+
+                                <Link to="/admin/login" className="mobile-secondary" onClick={() => closeMobileMenu()}>Admin</Link>
+                                <Link to="/contact" className="mobile-secondary" onClick={() => closeMobileMenu()}>Contact</Link>
                             </nav>
                         </div>
                     </div>
